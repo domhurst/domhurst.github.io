@@ -121,19 +121,23 @@
     })();
 
     (function(){
-      // Video previews: the card nearest the middle of the screen plays its clip; the rest pause.
+      // Video previews: the hovered card plays its clip; otherwise the card nearest the middle
+      // of the screen does. Only one plays at a time.
       var vids=[].slice.call(document.querySelectorAll('.card-video'));
       if(!vids.length || !('IntersectionObserver' in window)) return;
       if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       if(navigator.connection && navigator.connection.saveData) return;
-      var seen=[], current=null, queued=false;
+      var seen=[], current=null, hovered=null, queued=false;
       vids.forEach(function(v){
         v.addEventListener('playing',function(){ v.classList.add('on'); });
+        var c=v.closest('.card');
+        c.addEventListener('mouseenter',function(){ hovered=v; pick(); });
+        c.addEventListener('mouseleave',function(){ if(hovered===v){ hovered=null; pick(); } });
       });
       function pick(){
         queued=false;
-        var mid=innerHeight/2, best=null, bestD=Infinity;
-        seen.forEach(function(v){
+        var mid=innerHeight/2, best=hovered, bestD=Infinity;
+        if(!best) seen.forEach(function(v){
           var r=v.getBoundingClientRect();
           var d=Math.abs((r.top+r.bottom)/2-mid);
           if(d<bestD){ bestD=d; best=v; }
