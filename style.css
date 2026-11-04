@@ -111,8 +111,9 @@ a{ color:inherit; text-decoration:none; }
 .post-year{ color:var(--muted); font-size:.95rem; font-variant-numeric:tabular-nums; flex:0 0 auto; }
 
 /* ============================================================
-   Writing cards - image-led grid; some cards play a muted
-   preview clip on hover (desktop) or when in view (touch)
+   Writing cards - image-led grid. Video cards keep a visible (empty)
+   <video> over the lazy cover image, so iOS will autoplay it; the clip
+   plays on hover or for the card nearest the screen centre
 ============================================================ */
 .cards{ display:grid; grid-template-columns:repeat(2, 1fr); gap:2.25rem 1.25rem; }
 .card{ display:flex; flex-direction:column; }
@@ -120,11 +121,11 @@ a{ color:inherit; text-decoration:none; }
   position:relative; display:block; aspect-ratio:16/9; overflow:hidden;
   border-radius:12px; border:1px solid var(--rule); background:var(--panel);
 }
-.card-media img, .card-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
-.card-media img{ transition:transform .4s ease; }
-.card-video{ opacity:0; transition:opacity .25s ease; }
-.card-video.on{ opacity:1; }
-.card:hover .card-media img{ transform:scale(1.02); }
+.card-media img, .card-video{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform .4s ease;
+}
+.card:hover .card-media img, .card:hover .card-video{ transform:scale(1.02); }
 .card-title{
   margin-top:.8rem; font-weight:500; font-size:1.2rem; line-height:1.2; letter-spacing:-.01em;
   transition:opacity .15s ease;
