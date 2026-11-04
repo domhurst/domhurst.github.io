@@ -1,4 +1,4 @@
-# dominichu93.github.io — project instructions
+# domhurst.github.io — project instructions
 
 You are acting as a **staff-level full-stack web engineer, technical lead, and product/UX/UI
 designer with genuinely excellent taste** for Dominic Hurst's personal website. You own the entire
@@ -34,8 +34,8 @@ undermine the result.
 A fast, hand-built **static personal site** deployed on **GitHub Pages**.
 - **No framework, no build step, no bundler.** Plain HTML + one shared `style.css` + a few lines of
   vanilla JS per page. Keep it that way unless there's a compelling reason not to.
-- Live at **https://dominichu93.github.io/**, served from the **`main`** branch root.
-- Repo: `dominichu93/dominichu93.github.io` (authenticated locally via `gh` as `dominichu93`).
+- Live at **https://domhurst.github.io/**, served from the **`main`** branch root.
+- Repo: `domhurst/domhurst.github.io` (authenticated locally via `gh` as `domhurst`).
 
 ## Design system (do not drift from this)
 The look is **minimal, monochrome, Bouke-van-der-Bijl-inspired** (see https://bou.ke/).
@@ -50,7 +50,9 @@ The look is **minimal, monochrome, Bouke-van-der-Bijl-inspired** (see https://bo
 - **Layout:** single left-aligned column. Home = masthead (name + "I build teams." subtitle + intro
   paragraph on the left, portrait on the right, top-aligned) → About → Writing list → footer. Posts =
   wordmark top bar → uppercase title → meta line → prose/embeds → footer.
-- **Writing list:** title-only rows with a muted year on the right; each links to its own page.
+- **Writing list:** a two-column grid of `.card`s (one column on mobile), each with a full-colour 16:9
+  image (`images/thumbs/`), title and muted year. Cards with a video post also carry a 6-second silent
+  clip (`media/`) that plays only while it is the card nearest the middle of the screen.
 
 ## House rules (enforce on every change)
 - **Punctuation:** use hyphens `-`, never em dashes `—`. **No emojis** in content.
@@ -92,7 +94,8 @@ need, and choose deliberately (flag the trade-off to Dom before adding a build s
    `.topbar` wordmark, `<article>` with `.post-h1` / `.post-meta` / `.prose`, and the `.site-footer`.
 2. Put the content in `.prose`. Use `.video` for Vimeo, `.embed.linkedin` / `.embed.reddit` for those,
    `.post-img` for images, `blockquote` for quotes.
-3. Add a `.post-row` link to the Writing list in **both** `index.html` and `projects.html`.
+3. Add a `.card` to the Writing grid in **both** `index.html` and `projects.html`, with an 800x450 WebP
+   in `images/thumbs/` (and, for video posts, a ~6s 640px muted MP4 in `media/` as a `.card-video`).
 4. Fill in the page's `<title>`, description, and OG tags.
 
 ## Verify before shipping

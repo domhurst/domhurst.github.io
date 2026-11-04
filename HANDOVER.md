@@ -1,4 +1,4 @@
-# Handover — dominichu93.github.io redesign
+# Handover — domhurst.github.io redesign
 
 _Last updated: 2026-06-26. Read `CLAUDE.md` first for the system prompt / design rules._
 
@@ -45,7 +45,7 @@ images, and missing SEO. We did a deep technical review, then redesigned it.
 
 ## Deploy
 GitHub Pages serves `main` branch root. `git add -A && git commit && git push origin main` → live in
-~1 min at https://dominichu93.github.io/. The local folder is wired as a git repo tracking `origin/main`.
+~1 min at https://domhurst.github.io/. The local folder is wired as a git repo tracking `origin/main`.
 
 ## Key files
 - `style.css` — the whole design system (tokens, themes, masthead, post layout, embeds, toggle).
